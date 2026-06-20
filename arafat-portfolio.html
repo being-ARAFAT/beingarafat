@@ -1,0 +1,2461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Arafat Rahman Rahi — Student, Graphic Designer, Volunteer, Student Leader & Creative Enthusiast from Bangladesh.">
+<title>Arafat Rahman Rahi — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #04080f;
+  --deep: #070d1a;
+  --panel: #0b1425;
+  --glass: rgba(11,20,37,0.72);
+  --blue-bright: #1a8cff;
+  --cyan: #00e5ff;
+  --cyan-dim: rgba(0,229,255,0.12);
+  --blue-dim: rgba(26,140,255,0.10);
+  --glow-blue: 0 0 32px rgba(26,140,255,0.28);
+  --glow-cyan: 0 0 28px rgba(0,229,255,0.22);
+  --border: rgba(0,229,255,0.13);
+  --text: #dde8f5;
+  --text-muted: #7a99bb;
+  --text-dim: #3f5870;
+  --display: 'Space Grotesk', sans-serif;
+  --body: 'Inter', sans-serif;
+  --mono: 'Space Mono', monospace;
+  --radius: 16px;
+  --radius-sm: 8px;
+  --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--body);
+  background: var(--navy);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.65;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--blue-bright); border-radius: 99px; }
+
+/* ── CANVAS BG ── */
+#bg-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5vw;
+  height: 64px;
+  background: rgba(4,8,15,0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.nav-logo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--cyan);
+  letter-spacing: 0.03em;
+  text-decoration: none;
+}
+.nav-logo span { color: var(--text); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--display);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition);
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 2px;
+  background: var(--cyan);
+  border-radius: 99px;
+  transition: width var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--cyan); }
+.nav-links a:hover::after,
+.nav-links a.active::after { width: 100%; }
+
+.nav-cta {
+  background: transparent;
+  border: 1px solid var(--cyan);
+  color: var(--cyan) !important;
+  padding: 6px 18px;
+  border-radius: 99px;
+  font-size: 0.78rem !important;
+  transition: background var(--transition), box-shadow var(--transition) !important;
+}
+
+.nav-cta:hover {
+  background: var(--cyan-dim) !important;
+  box-shadow: var(--glow-cyan) !important;
+}
+
+.nav-cta::after { display: none !important; }
+
+/* ── HAMBURGER ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--cyan);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ── SECTIONS ── */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+/* ── HERO ── */
+#home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 64px;
+  overflow: hidden;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 4rem;
+  align-items: center;
+  padding: 5rem 5vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--cyan);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--cyan);
+}
+
+.hero-name {
+  font-family: var(--display);
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 0.6rem;
+}
+
+.hero-name .highlight {
+  background: linear-gradient(135deg, var(--blue-bright), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-tagline {
+  font-family: var(--display);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-bottom: 1.8rem;
+  min-height: 2rem;
+}
+
+.typed-cursor {
+  display: inline-block;
+  width: 2px;
+  background: var(--cyan);
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  height: 1.1em;
+}
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+.hero-desc {
+  color: var(--text-muted);
+  font-size: 0.97rem;
+  line-height: 1.8;
+  max-width: 520px;
+  margin-bottom: 2.2rem;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2.2rem;
+}
+
+.badge {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: var(--cyan-dim);
+  border: 1px solid rgba(0,229,255,0.2);
+  padding: 5px 14px;
+  border-radius: 99px;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--blue-bright), var(--cyan));
+  color: var(--navy);
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 13px 28px;
+  border-radius: 99px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: box-shadow var(--transition), transform var(--transition);
+  box-shadow: 0 4px 20px rgba(0,229,255,0.3);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,229,255,0.45);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 0.88rem;
+  padding: 12px 26px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.btn-outline:hover {
+  border-color: var(--cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+/* HERO PORTRAIT */
+.hero-portrait {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.portrait-ring {
+  position: relative;
+  width: 380px;
+  height: 380px;
+}
+
+.portrait-ring::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: conic-gradient(var(--cyan), var(--blue-bright), var(--navy), var(--cyan));
+  animation: spin 6s linear infinite;
+  z-index: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.portrait-inner {
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: var(--panel);
+  overflow: hidden;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portrait-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--panel) 0%, #0d1f3a 100%);
+  color: var(--text-muted);
+  font-family: var(--display);
+  font-size: 0.82rem;
+  text-align: center;
+  gap: 12px;
+}
+
+.portrait-placeholder svg {
+  width: 80px; height: 80px;
+  opacity: 0.3;
+}
+
+.portrait-placeholder span {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  max-width: 160px;
+  line-height: 1.5;
+}
+
+
+.profile-image {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.portrait-glow {
+  position: absolute;
+  inset: -40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);
+  z-index: -1;
+}
+
+/* FLOATING STATS */
+.hero-stats {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.hero-stats.left  { left: -80px; top: 50%; transform: translateY(-50%); }
+.hero-stats.right { right: -80px; top: 50%; transform: translateY(-50%); }
+
+.stat-pill {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  white-space: nowrap;
+  box-shadow: var(--glow-blue);
+}
+.stat-pill strong {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--cyan);
+  display: block;
+}
+.stat-pill span {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* ── SECTION HEADER ── */
+.section-wrap { padding: 6rem 0; }
+
+.section-header {
+  margin-bottom: 3.5rem;
+}
+
+.section-eye {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0.8rem;
+}
+.section-eye::before {
+  content: '';
+  width: 22px; height: 1px;
+  background: var(--cyan);
+}
+
+.section-title {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.section-title span {
+  background: linear-gradient(90deg, var(--blue-bright), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-sub {
+  color: var(--text-muted);
+  margin-top: 0.8rem;
+  font-size: 0.97rem;
+  max-width: 540px;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 0 5vw;
+}
+
+/* ── GLASS CARD ── */
+.glass-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: var(--radius);
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.glass-card:hover {
+  border-color: rgba(0,229,255,0.28);
+  box-shadow: var(--glow-cyan);
+  transform: translateY(-4px);
+}
+
+/* ── ABOUT ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-text p {
+  color: var(--text-muted);
+  font-size: 0.97rem;
+  line-height: 1.85;
+  margin-bottom: 1.2rem;
+}
+
+.about-text p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.about-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.highlight-item {
+  padding: 1.2rem;
+  border-left: 2px solid var(--cyan);
+  background: var(--blue-dim);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.highlight-item strong {
+  font-family: var(--display);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--cyan);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.highlight-item span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.about-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.about-img-main {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: var(--radius);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  font-family: var(--mono);
+}
+
+.about-imgs-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.about-img-sm {
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+  font-size: 0.72rem;
+  font-family: var(--mono);
+}
+
+/* ── ACHIEVEMENTS ── */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.ach-card {
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.ach-img {
+  width: 100%;
+  aspect-ratio: 16/8;
+  background: linear-gradient(135deg, var(--panel) 0%, #0a1830 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ach-img-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+
+.ach-img-placeholder .ach-icon {
+  font-size: 2rem;
+  opacity: 0.5;
+}
+
+.ach-badge-overlay {
+  position: absolute;
+  top: 12px; right: 12px;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 99px;
+  color: var(--cyan);
+}
+
+.ach-body {
+  padding: 1.4rem;
+}
+
+.ach-date {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.ach-title {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+
+.ach-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.ach-expand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--cyan);
+  margin-top: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── SKILLS ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.skill-category {
+  padding: 2rem;
+}
+
+.skill-cat-title {
+  font-family: var(--display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skill-cat-title::before {
+  content: '';
+  width: 18px; height: 1px;
+  background: var(--cyan);
+}
+
+.skill-item {
+  margin-bottom: 1.4rem;
+}
+
+.skill-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.skill-name {
+  font-family: var(--display);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skill-icon {
+  width: 22px; height: 22px;
+  border-radius: 4px;
+  background: var(--blue-dim);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+.skill-pct {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--cyan);
+}
+
+.skill-bar-bg {
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--blue-bright), var(--cyan));
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 0 8px rgba(0,229,255,0.5);
+}
+
+/* ── GAMING ── */
+.gaming-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+}
+
+.gaming-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.2rem;
+}
+
+.game-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  aspect-ratio: 3/4;
+  border: 1px solid var(--border);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.game-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0,229,255,0.2);
+  border-color: rgba(0,229,255,0.35);
+}
+
+.game-cover {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  opacity: 0.15;
+  filter: blur(1px);
+}
+
+.game-gradient {
+  position: absolute;
+  inset: 0;
+}
+
+.game-info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(4,8,15,0.98) 0%, transparent 100%);
+}
+
+.game-emoji {
+  font-size: 2.5rem;
+  display: block;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 12px rgba(0,229,255,0.4));
+}
+
+.game-title {
+  font-family: var(--display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+.game-platform {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.game-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  padding: 3px 8px;
+  border-radius: 99px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.status-playing   { background: rgba(0,229,255,0.15); color: var(--cyan); border: 1px solid rgba(0,229,255,0.25); }
+.status-active { background: rgba(0,255,128,0.12); color: #00ff80; border: 1px solid rgba(0,255,128,0.2); }
+.status-completed { background: rgba(0,255,128,0.12); color: #00ff80; border: 1px solid rgba(0,255,128,0.2); }
+.status-casual    { background: rgba(255,200,0,0.12); color: #ffc800; border: 1px solid rgba(255,200,0,0.2); }
+.status-hold      { background: rgba(255,100,0,0.12); color: #ff6400; border: 1px solid rgba(255,100,0,0.2); }
+
+.status-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.game-id-field {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  margin-top: 5px;
+  opacity: 0.7;
+}
+
+/* ── BLOG ── */
+.blog-search-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 220px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 10px 20px;
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color var(--transition);
+}
+.search-input:focus { border-color: var(--cyan); }
+.search-input::placeholder { color: var(--text-dim); }
+
+.blog-filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--cyan-dim);
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.blog-card {
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.blog-cover {
+  width: 100%;
+  aspect-ratio: 16/8;
+  background: linear-gradient(135deg, var(--panel), #0a1830);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.blog-cover-label {
+  position: absolute;
+  bottom: 10px; left: 12px;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: var(--glass);
+  backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+}
+
+.blog-body { padding: 1.4rem; }
+
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin-bottom: 0.6rem;
+}
+
+.blog-title {
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.35;
+  margin-bottom: 0.6rem;
+}
+
+.blog-excerpt {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.blog-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.blog-tag {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--blue-bright);
+  background: var(--blue-dim);
+  border: 1px solid rgba(26,140,255,0.2);
+  padding: 3px 10px;
+  border-radius: 99px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.read-more {
+  font-family: var(--display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: gap var(--transition);
+}
+.read-more:hover { gap: 12px; }
+
+/* ── CONTACT ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.contact-left p {
+  color: var(--text-muted);
+  font-size: 0.97rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  border-radius: var(--radius-sm);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: all var(--transition);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-link::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--cyan);
+  transform: scaleY(0);
+  transition: transform var(--transition);
+  border-radius: 0 2px 2px 0;
+}
+
+.social-link:hover {
+  border-color: rgba(0,229,255,0.28);
+  background: rgba(0,229,255,0.05);
+}
+.social-link:hover::before { transform: scaleY(1); }
+
+.social-icon {
+  width: 36px; height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  background: var(--blue-dim);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.social-info { flex: 1; }
+.social-info strong {
+  display: block;
+  font-family: var(--display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.social-info span {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-family: var(--mono);
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-family: var(--mono);
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: color var(--transition), background var(--transition);
+}
+.copy-btn:hover { color: var(--cyan); background: var(--cyan-dim); }
+
+/* CONTACT FORM */
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+
+.form-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.form-input,
+.form-textarea {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  resize: none;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(0,229,255,0.07);
+}
+
+.form-textarea { min-height: 130px; }
+
+/* ── FOOTER ── */
+footer {
+  position: relative;
+  z-index: 1;
+  background: var(--deep);
+  border-top: 1px solid var(--border);
+  padding: 3rem 5vw 1.5rem;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-brand {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+}
+.footer-brand span { color: var(--cyan); }
+
+.footer-tagline {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-nav a {
+  font-family: var(--display);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color var(--transition);
+}
+.footer-nav a:hover { color: var(--cyan); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-copy {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.footer-socials {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.footer-social {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+.footer-social:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  box-shadow: var(--glow-cyan);
+  background: var(--cyan-dim);
+}
+
+/* BACK TO TOP */
+#back-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyan);
+  cursor: pointer;
+  font-size: 1.1rem;
+  z-index: 90;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+  text-decoration: none;
+}
+#back-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+#back-top:hover { box-shadow: var(--glow-cyan); }
+
+/* ── REVEAL ANIM ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── TOAST ── */
+.toast {
+  position: fixed;
+  bottom: 5rem; right: 2rem;
+  background: var(--glass);
+  border: 1px solid var(--cyan);
+  backdrop-filter: blur(12px);
+  color: var(--cyan);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* ── MOBILE NAV MENU ── */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 64px; left: 0; right: 0;
+  background: rgba(4,8,15,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 5vw 2rem;
+  z-index: 99;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: color var(--transition);
+}
+.mobile-menu a:hover { color: var(--cyan); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; padding: 4rem 5vw; gap: 3rem; }
+  .hero-portrait { order: -1; }
+  .portrait-ring { width: 240px; height: 240px; }
+  .hero-stats { display: none; }
+  .about-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .achievements-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .gaming-grid { grid-template-columns: repeat(2, 1fr); }
+  .blog-grid { grid-template-columns: 1fr; }
+  .footer-top { flex-direction: column; gap: 1rem; }
+}
+
+@media (max-width: 480px) {
+  .gaming-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-name { font-size: 2.2rem; }
+  .about-highlights { grid-template-columns: 1fr; }
+  .hero-btns { flex-direction: column; }
+  .btn-primary, .btn-outline { justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- BG CANVAS -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">ARR<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#gaming">Gaming</a></li>
+    <li><a href="#anime">Anime</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<nav class="mobile-menu" id="mobile-menu">
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#achievements">Achievements</a>
+  <a href="#skills">Skills</a>
+  <a href="#gaming">Gaming</a>
+  <a href="#anime">Anime</a>
+  <a href="#blog">Blog</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-inner">
+    <div class="hero-content reveal">
+      <div class="hero-eyebrow">Hello, World — Welcome to my space</div>
+      <h1 class="hero-name">Arafat<br><span class="highlight">Rahman Rahi</span></h1>
+      <div class="hero-tagline">
+        <span id="typed-text"></span><span class="typed-cursor"></span>
+      </div>
+      <p class="hero-desc">A high school student, passionate graphic designer, and RCY volunteer from Dhaka, Bangladesh — turning creative ideas into impactful experiences, one design at a time.</p>
+      <div class="hero-badges">
+        <span class="badge">🎨 Designer</span>
+        <span class="badge">⛑️ RCY Volunteer</span>
+        <span class="badge">🎮 Gamer</span>
+        <span class="badge">✍️ Creator</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#achievements" class="btn-primary">View Achievements →</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-portrait reveal">
+      <div class="portrait-ring">
+        <div class="portrait-inner">
+          <img src="Profile.jpg" alt="Arafat Rahman Rahi" class="profile-image">
+        </div>
+        <div class="portrait-glow"></div>
+      </div>
+      <div class="hero-stats left">
+        <div class="stat-pill">
+          <strong>RCY</strong>
+          <span>Volunteer</span>
+        </div>
+        <div class="stat-pill">
+          <strong>2025</strong>
+          <span>Trivium Festival</span>
+        </div>
+      </div>
+      <div class="hero-stats right">
+        <div class="stat-pill">
+          <strong>TGHS</strong>
+          <span>Arts Club Pres.</span>
+        </div>
+        <div class="stat-pill">
+          <strong>SSC</strong>
+          <span>2026 Batch</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container section-wrap">
+    <div class="section-header reveal">
+      <div class="section-eye">About Me</div>
+      <h2 class="section-title">The story <span>so far</span></h2>
+      <p class="section-sub">A student navigating creativity, leadership, and purpose — all at once.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>Hi...I'm <strong>Arafat Rahman Rahi</strong>, a first-year college student who completed my SSC from Tejgaon Government High School, Dhaka, Bangladesh, in 2026. My journey in design began with curiosity and experimentation, from Canva to Photoshop and Illustrator, eventually evolving into a powerful way to express ideas and solve creative challenges.</p>
+        <p>As <strong>President of the TGHS Arts & Crafts Club</strong>, I discovered that creativity thrives in community. I directed the <strong>TGHS Trivium Festival 2025</strong>, an experience that sharpened my understanding of event management, team coordination, and creative leadership under pressure.</p>
+        <p>Through <strong>Red Crescent Youth (RCY)</strong> volunteer work, I've learned that service is the most meaningful form of design — shaping experiences that actually matter to people's lives.</p>
+        <p>Beyond academics and design, I have a deep passion for exploring the world, discovering new places, cultures, and perspectives. Gaming is another interest that has helped me develop critical thinking, strategic decision-making, and collaboration skills. Every experience—whether through creativity, leadership, volunteering, gaming, or travel—contributes to my personal growth and broadens my understanding of the world.</p>
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <strong>Education</strong>
+            <span>SSC 2026 · TGHS</span>
+          </div>
+          <div class="highlight-item">
+            <strong>Leadership</strong>
+            <span>TGHS Arts and Crafts Club President</span>
+          </div>
+          <div class="highlight-item">
+            <strong>Volunteer</strong>
+            <span>RCY · Red Crescent Youth</span>
+          </div>
+          <div class="highlight-item">
+            <strong>Design</strong>
+            <span>Canva · PS · AI</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal">
+        <div class="about-img-main">
+          <img src="Cox.jpg" alt="Cox's Bazar" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius);">
+        </div>
+        <div class="about-imgs-row">
+          <div class="about-img-sm"><img src="RCY.jpg" alt="RCY Activity" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-sm);"></div>
+          <div class="about-img-sm"><img src="Trivium1.jpg" alt="Trivium Festival" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-sm);"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="container section-wrap">
+    <div class="section-header reveal">
+      <div class="section-eye">Milestones</div>
+      <h2 class="section-title">Key <span>Achievements</span></h2>
+      <p class="section-sub">Moments that shaped who I am — built through effort, collaboration, and purpose.</p>
+    </div>
+    <div class="achievements-grid">
+
+      <div class="glass-card ach-card reveal">
+        <div class="ach-img">
+          <img src="RCY.png" alt="RCY Volunteer" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <div class="ach-badge-overlay">Volunteer</div>
+        </div>
+        <div class="ach-body">
+          <div class="ach-date">2022 — Ongoing</div>
+          <div class="ach-title">RCY Volunteer — Red Crescent Youth</div>
+          <div class="ach-desc">Active volunteer with the Red Crescent Youth, participating in humanitarian campaigns, community awareness drives, and emergency preparedness activities across Bangladesh.</div>
+          <div class="ach-expand">Learn more ↗</div>
+        </div>
+      </div>
+
+      <div class="glass-card ach-card reveal">
+        <div class="ach-img">
+          <img src="TGHSACC.png" alt="TGHS Arts & Crafts Club" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <div class="ach-badge-overlay">Leadership</div>
+        </div>
+        <div class="ach-body">
+          <div class="ach-date">2025 — 2026</div>
+          <div class="ach-title">President — TGHS Arts & Crafts Club</div>
+          <div class="ach-desc">Elected President of the TGHS Arts & Crafts Club, leading creative initiatives, organizing exhibitions, and building a community of young artists and designers within the school.</div>
+          <div class="ach-expand">Learn more ↗</div>
+        </div>
+      </div>
+
+      <div class="glass-card ach-card reveal">
+        <div class="ach-img">
+          <img src="Trivium.png" alt="Trivium Festival 2025" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <div class="ach-badge-overlay">Director</div>
+        </div>
+        <div class="ach-body">
+          <div class="ach-date">2025</div>
+          <div class="ach-title">TGHS Trivium Festival 2025 — Director</div>
+          <div class="ach-desc">Directed the annual TGHS Trivium Festival, managing cross-functional teams, coordinating logistics, designing visuals, and delivering a memorable cultural event for the entire school community.</div>
+          <div class="ach-expand">Learn more ↗</div>
+        </div>
+      </div>
+
+      <div class="glass-card ach-card reveal">
+        <div class="ach-img">
+          <img src="TGHS.png" alt="SSC 2026" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <div class="ach-badge-overlay">Academic</div>
+        </div>
+        <div class="ach-body">
+          <div class="ach-date">2026</div>
+          <div class="ach-title">SSC 2026 — Academic Milestone</div>
+          <div class="ach-desc">Completing the Secondary School Certificate (SSC) examination — a defining academic milestone marking the end of secondary education and the beginning of new horizons.</div>
+          <div class="ach-expand">Learn more ↗</div>
+        </div>
+      </div>
+
+      <div class="glass-card ach-card reveal">
+        <div class="ach-img">
+          <img src="Cox.jpg" alt="Cox's Bazar" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <div class="ach-badge-overlay">Experience</div>
+        </div>
+        <div class="ach-body">
+          <div class="ach-date">2025</div>
+          <div class="ach-title">Cox's Bazar Family Tour</div>
+          <div class="ach-desc">Took a chance to visit Cox's Bazar — an enriching experience with my family, and memories along the world's longest natural sea beach.</div>
+          <div class="ach-expand">Learn more ↗</div>
+        </div>
+      </div>
+
+      <div class="glass-card ach-card reveal" style="border: 1px dashed rgba(0,229,255,0.2); background: transparent;">
+        <div class="ach-body" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:220px;text-align:center;gap:0.8rem;">
+          <div style="font-size:2rem;opacity:0.3">+</div>
+          <div class="ach-title" style="opacity:0.4">More to come</div>
+          <div class="ach-desc" style="opacity:0.4">Every experience becomes an achievement with the right perspective.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container section-wrap">
+    <div class="section-header reveal">
+      <div class="section-eye">Expertise</div>
+      <h2 class="section-title">Skills &amp; <span>Capabilities</span></h2>
+      <p class="section-sub">Tools, techniques, and soft skills — built through real projects and hands-on experience.</p>
+    </div>
+    <div class="skills-grid">
+
+      <div class="glass-card skill-category reveal">
+        <div class="skill-cat-title">✍️ Designing Tools</div>
+        <div class="skill-item">
+          <div class="skill-row">
+            <div class="skill-name"><div class="skill-icon">🖼</div> Canva</div>
+            <div class="skill-pct">80%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row">
+            <div class="skill-name"><div class="skill-icon">🖌</div> Adobe Photoshop</div>
+            <div class="skill-pct">70%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="70"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row">
+            <div class="skill-name"><div class="skill-icon">✏️</div> Adobe Illustrator</div>
+            <div class="skill-pct">30%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="30"></div></div>
+        </div>
+      </div>
+
+      <div class="glass-card skill-category reveal">
+        <div class="skill-cat-title">🧭 Leadership</div>
+        <div class="skill-item">
+          <div class="skill-row">
+            <div class="skill-name"><div class="skill-icon">🗓</div> Event Management</div>
+            <div class="skill-pct">80%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row">
+            <div class="skill-name"><div class="skill-icon">👥</div> Team Coordination</div>
+            <div class="skill-pct">78%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="78"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row">
+            <div class="skill-name"><div class="skill-icon">💬</div> Communication</div>
+            <div class="skill-pct">82%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="82"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row">
+            <div class="skill-name"><div class="skill-icon">🏛</div> Org. Leadership</div>
+            <div class="skill-pct">75%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75"></div></div>
+        </div>
+      </div>
+
+      <div class="glass-card skill-category reveal">
+        <div class="skill-cat-title">🎨 Graphic Design</div>
+	<div class="skill-item">
+          <div class="skill-row">
+            <div class="skill-name"><div class="skill-icon">📱</div> Social Media Design</div>
+            <div class="skill-pct">90%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row">
+            <div class="skill-name"><div class="skill-icon">📌</div> Poster Design</div>
+            <div class="skill-pct">88%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row">
+            <div class="skill-name"><div class="skill-icon">📊</div> Presentation Design</div>
+            <div class="skill-pct">82%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="82"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row">
+            <div class="skill-name"><div class="skill-icon">🔧</div> Creative Problem Solving</div>
+            <div class="skill-pct">79%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="79"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- GAMING -->
+<section id="gaming">
+  <div class="container section-wrap">
+    <div class="gaming-header-row">
+      <div class="section-header reveal" style="margin-bottom:0">
+        <div class="section-eye">Game Library</div>
+        <h2 class="section-title">Gaming <span>Showcase</span></h2>
+      </div>
+      <div style="font-family:var(--mono);font-size:0.72rem;color:var(--text-dim);text-align:right;" class="reveal">
+        13 games · 2 platforms
+      </div>
+    </div>
+    <div class="gaming-grid">
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="FF.jpg" alt="Free Fire" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">Free Fire</div>
+            <div class="game-platform">Mobile · PC</div>
+            <span class="game-status status-active"><span class="status-dot"></span>Active</span>
+            <div class="game-id-field">UID: 1829147514</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="Genshin.webp" alt="Genshin Impact" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">Genshin Impact</div>
+            <div class="game-platform">PC · Mobile</div>
+            <span class="game-status status-active"><span class="status-dot"></span>Active</span>
+            <div class="game-id-field">UID: 1820780862</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="GTAV.jpg" alt="GTA V" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">GTA V</div>
+            <div class="game-platform">PC</div>
+            <span class="game-status status-casual"><span class="status-dot"></span>Casual</span>
+            <div class="game-id-field">ID: —</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="Forza.jpg" alt="Forza Horizon 5" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">Forza Horizon 5</div>
+            <div class="game-platform">PC</div>
+            <span class="game-status status-hold"><span class="status-dot"></span>On Hold</span>
+            <div class="game-id-field">ID: —</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="Assb.jpg" alt="Assassin's Creed Brotherhood" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">Assassin's Creed Brotherhood</div>
+            <div class="game-platform">PC</div>
+            <span class="game-status status-hold"><span class="status-dot"></span>On Hold</span>
+            <div class="game-id-field">ID: —</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="Stumble.jpg" alt="Stumble Guys" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">Stumble Guys</div>
+            <div class="game-platform">PC</div>
+            <span class="game-status status-hold"><span class="status-dot"></span>On Hold</span>
+            <div class="game-id-field">ID: —</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="Asphalt.jpg" alt="Asphalt Legends" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">Asphalt Legends</div>
+            <div class="game-platform">PC</div>
+            <span class="game-status status-hold"><span class="status-dot"></span>On Hold</span>
+            <div class="game-id-field">ID: —</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="Ranch.jpg" alt="Ranch Simulator" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">Ranch Simulator</div>
+            <div class="game-platform">PC</div>
+            <span class="game-status status-casual"><span class="status-dot"></span>Casual</span>
+            <div class="game-id-field">ID: —</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="Hollow.jpg" alt="Hollow Knight" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">Hollow Knight</div>
+            <div class="game-platform">PC</div>
+            <span class="game-status status-casual"><span class="status-dot"></span>Casual</span>
+            <div class="game-id-field">ID: —</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="Silk.jpg" alt="Hollow Knight: Silksong" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">Hollow Knight: Silksong</div>
+            <div class="game-platform">PC</div>
+            <span class="game-status status-casual"><span class="status-dot"></span>Casual</span>
+            <div class="game-id-field">ID: —</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="Dash.jpg" alt="Geometry Dash" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">Geometry Dash</div>
+            <div class="game-platform">PC</div>
+            <span class="game-status status-casual"><span class="status-dot"></span>Casual</span>
+            <div class="game-id-field">ID: —</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="Buckshot.jpg" alt="Buckshot Roulette" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">Buckshot Roulette</div>
+            <div class="game-platform">PC</div>
+            <span class="game-status status-casual"><span class="status-dot"></span>Casual</span>
+            <div class="game-id-field">ID: —</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="Among-us.jpg" alt="Among Us" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">Among Us</div>
+            <div class="game-platform">PC</div>
+            <span class="game-status status-casual"><span class="status-dot"></span>Casual</span>
+            <div class="game-id-field">ID: —</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ANIME -->
+<section id="anime">
+  <div class="container section-wrap">
+    <div class="gaming-header-row">
+      <div class="section-header reveal" style="margin-bottom:0">
+        <div class="section-eye">Watch List</div>
+        <h2 class="section-title">Anime &amp; <span>Animated Movies</span></h2>
+      </div>
+      <div style="font-family:var(--mono);font-size:0.72rem;color:var(--text-dim);text-align:right;" class="reveal">
+        5 titles · Anime &amp; Film
+      </div>
+    </div>
+    <div class="gaming-grid">
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="JJK.png" alt="Jujutsu Kaisen" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">Jujutsu Kaisen</div>
+            <div class="game-platform">Anime · Series</div>
+            <span class="game-status status-completed"><span class="status-dot"></span>Watched</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="DS.webp" alt="Demon Slayer" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">Demon Slayer</div>
+            <div class="game-platform">Anime · Series</div>
+            <span class="game-status status-playing"><span class="status-dot"></span>Watching</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="YN.jpg" alt="Your Name" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">Your Name</div>
+            <div class="game-platform">Anime · Film</div>
+            <span class="game-status status-completed"><span class="status-dot"></span>Watched</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="ASV.webp" alt="A Silent Voice" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">A Silent Voice</div>
+            <div class="game-platform">Anime · Film</div>
+            <span class="game-status status-completed"><span class="status-dot"></span>Watched</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-cover">
+          <img src="TLK.webp" alt="The Lion King" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="game-gradient" style="background:linear-gradient(180deg,transparent 30%,rgba(4,8,15,0.97) 100%);position:absolute;inset:0;"></div>
+          <div class="game-info">
+            <div class="game-title">The Lion King</div>
+            <div class="game-platform">Animated · Film</div>
+            <span class="game-status status-completed"><span class="status-dot"></span>Watched</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="container section-wrap">
+    <div class="section-header reveal">
+      <div class="section-eye">Updates</div>
+      <h2 class="section-title">Blog &amp; <span>Reflections</span></h2>
+      <p class="section-sub">Daily life updates.</p>
+    </div>
+
+    <div class="blog-search-row reveal">
+      <input type="text" class="search-input" placeholder="Search posts...">
+      <div class="blog-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="design">Design</button>
+        <button class="filter-btn" data-filter="leadership">Leadership</button>
+        <button class="filter-btn" data-filter="gaming">Gaming</button>
+        <button class="filter-btn" data-filter="life">Life</button>
+      </div>
+    </div>
+
+    <div class="blog-grid">
+
+      <div class="glass-card blog-card reveal" data-category="design">
+        <div class="blog-cover">
+          🎨
+          <div class="blog-cover-label">Design</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span>Jun 2025</span>
+            <span>·</span>
+            <span>4 min read</span>
+          </div>
+          <div class="blog-title">What directing Trivium Festival taught me about design under pressure</div>
+          <div class="blog-excerpt">When you're coordinating visuals, teams, and deadlines all at once, design stops being aesthetic and starts being problem-solving.</div>
+          <div class="blog-tags">
+            <span class="blog-tag">Design</span>
+            <span class="blog-tag">Leadership</span>
+          </div>
+          <a href="#" class="read-more">Read more <span>→</span></a>
+        </div>
+      </div>
+
+      <div class="glass-card blog-card reveal" data-category="leadership">
+        <div class="blog-cover">
+          🤝
+          <div class="blog-cover-label">Volunteer</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span>Apr 2025</span>
+            <span>·</span>
+            <span>3 min read</span>
+          </div>
+          <div class="blog-title">Lessons from the field: my RCY volunteer journey so far</div>
+          <div class="blog-excerpt">Volunteering for Red Crescent Youth has redefined what it means to show up for your community — and for yourself.</div>
+          <div class="blog-tags">
+            <span class="blog-tag">Volunteer</span>
+            <span class="blog-tag">RCY</span>
+          </div>
+          <a href="#" class="read-more">Read more <span>→</span></a>
+        </div>
+      </div>
+
+      <div class="glass-card blog-card reveal" data-category="gaming">
+        <div class="blog-cover">
+          🎮
+          <div class="blog-cover-label">Gaming</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span>Mar 2025</span>
+            <span>·</span>
+            <span>5 min read</span>
+          </div>
+          <div class="blog-title">Why Hollow Knight's world-building is secretly a design lesson</div>
+          <div class="blog-excerpt">There's a reason Team Cherry's 2D platformer feels more alive than games with ten times the budget. It's all in the details.</div>
+          <div class="blog-tags">
+            <span class="blog-tag">Gaming</span>
+            <span class="blog-tag">Design</span>
+          </div>
+          <a href="#" class="read-more">Read more <span>→</span></a>
+        </div>
+      </div>
+
+      <div class="glass-card blog-card reveal" data-category="life">
+        <div class="blog-cover">
+          🌊
+          <div class="blog-cover-label">Life</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span>Jan 2025</span>
+            <span>·</span>
+            <span>3 min read</span>
+          </div>
+          <div class="blog-title">Cox's Bazar: what the sea reminds you to let go of</div>
+          <div class="blog-excerpt">A school trip. A beach. And an unexpected conversation with yourself that the waves make impossible to avoid.</div>
+          <div class="blog-tags">
+            <span class="blog-tag">Life</span>
+            <span class="blog-tag">Travel</span>
+          </div>
+          <a href="#" class="read-more">Read more <span>→</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container section-wrap">
+    <div class="section-header reveal">
+      <div class="section-eye">Get in Touch</div>
+      <h2 class="section-title">Let's <span>Connect</span></h2>
+      <p class="section-sub">For collaborations, design work, or just a conversation — I'm always open.</p>
+    </div>
+    <div class="contact-grid">
+
+      <div class="contact-left reveal">
+        <p>Whether you're looking for a design collaborator, a creative voice for your project, or want to connect as a fellow student — feel free to reach out through any of the channels below.</p>
+
+        <div class="social-links">
+          <a class="social-link" href="https://wa.me/8801886602280" target="_blank" rel="noopener">
+            <div class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+            <div class="social-info">
+              <strong>WhatsApp</strong>
+              <span>+880 1886-602280</span>
+            </div>
+          </a>
+          <a class="social-link" href="https://facebook.com/GOJ00" target="_blank" rel="noopener">
+            <div class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+            <div class="social-info">
+              <strong>Facebook</strong>
+              <span>@GOJ00</span>
+            </div>
+          </a>
+          <a class="social-link" href="https://instagram.com/_being_arafat" target="_blank" rel="noopener">
+            <div class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="url(#ig-grad)"><defs><linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#f09433"/><stop offset="25%" style="stop-color:#e6683c"/><stop offset="50%" style="stop-color:#dc2743"/><stop offset="75%" style="stop-color:#cc2366"/><stop offset="100%" style="stop-color:#bc1888"/></linearGradient></defs><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
+            <div class="social-info">
+              <strong>Instagram</strong>
+              <span>@_being_arafat</span>
+            </div>
+          </a>
+          <a class="social-link" href="https://t.me/being_ARAFAT" target="_blank" rel="noopener">
+            <div class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="#26A5E4"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></div>
+            <div class="social-info">
+              <strong>Telegram</strong>
+              <span>@being_ARAFAT</span>
+            </div>
+          </a>
+          <a class="social-link" href="https://discord.com/users/1513900670892376136" target="_blank" rel="noopener">
+            <div class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="#5865F2"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.11 18.1.127 18.11a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></div>
+            <div class="social-info">
+              <strong>Discord</strong>
+              <span>@_being_arafat</span>
+            </div>
+          </a>
+          <a class="social-link" href="https://www.hoyolab.com/accountCenter/postList?id=476662798" target="_blank" rel="noopener">
+            <div class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="#4AAED9"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.4a9.6 9.6 0 1 1 0 19.2A9.6 9.6 0 0 1 12 2.4zm0 2.4a7.2 7.2 0 1 0 0 14.4A7.2 7.2 0 0 0 12 4.8zm0 2.4a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6zm0 2.4a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8z"/></svg></div>
+            <div class="social-info">
+              <strong>HoYoLab</strong>
+              <span>Genshin · HoYoLab Profile</span>
+            </div>
+          </a>
+          <a class="social-link" href="mailto:3eingarafat@gmail.com" target="_blank" rel="noopener">
+            <div class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" fill="#EA4335"/></svg></div>
+            <div class="social-info">
+              <strong>Gmail</strong>
+              <span>3eingarafat@gmail.com</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="glass-card" style="padding:2rem;">
+          <form class="contact-form" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+              <label class="form-label">Your Name</label>
+              <input type="text" class="form-input" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-input" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Subject</label>
+              <input type="text" class="form-input" placeholder="What's this about?">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Message</label>
+              <textarea class="form-textarea" placeholder="Write your message here..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+              Send Message →
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Arafat Rahman <span>Rahi</span></div>
+        <div class="footer-tagline">Student · Designer · Volunteer · Creator</div>
+      </div>
+      <nav class="footer-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#skills">Skills</a>
+        <a href="#gaming">Gaming</a>
+        <a href="#anime">Anime</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Arafat Rahman Rahi. All rights reserved.</div>
+      <div class="footer-socials">
+        <a href="https://wa.me/8801886602280" target="_blank" rel="noopener" class="footer-social" title="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <a href="https://facebook.com/GOJ00" target="_blank" rel="noopener" class="footer-social" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="https://instagram.com/_being_arafat" target="_blank" rel="noopener" class="footer-social" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="https://t.me/being_ARAFAT" target="_blank" rel="noopener" class="footer-social" title="Telegram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+        <a href="https://discord.com/users/1513900670892376136" target="_blank" rel="noopener" class="footer-social" title="Discord"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.11 18.1.127 18.11a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
+        <a href="https://www.hoyolab.com/accountCenter/postList?id=476662798" target="_blank" rel="noopener" class="footer-social" title="HoYoLab"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.4a9.6 9.6 0 1 1 0 19.2A9.6 9.6 0 0 1 12 2.4zm0 2.4a7.2 7.2 0 1 0 0 14.4A7.2 7.2 0 0 0 12 4.8zm0 2.4a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6zm0 2.4a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8z"/></svg></a>
+        <a href="mailto:3eingarafat@gmail.com" target="_blank" rel="noopener" class="footer-social" title="Gmail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<a href="#home" id="back-top" title="Back to top">↑</a>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ── PARTICLES CANVAS ── */
+(function(){
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize(){
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function Particle(){
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.r = Math.random() * 1.5 + 0.3;
+    this.vx = (Math.random() - 0.5) * 0.3;
+    this.vy = (Math.random() - 0.5) * 0.3;
+    this.alpha = Math.random() * 0.5 + 0.1;
+    this.color = Math.random() > 0.5 ? '0,229,255' : '26,140,255';
+  }
+  Particle.prototype.update = function(){
+    this.x += this.vx;
+    this.y += this.vy;
+    if(this.x < 0) this.x = W;
+    if(this.x > W) this.x = 0;
+    if(this.y < 0) this.y = H;
+    if(this.y > H) this.y = 0;
+  };
+  Particle.prototype.draw = function(){
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${this.color},${this.alpha})`;
+    ctx.fill();
+  };
+
+  const N = window.innerWidth < 768 ? 60 : 120;
+  for(let i=0;i<N;i++) particles.push(new Particle());
+
+  /* Geometric shapes */
+  const shapes = [];
+  for(let i=0;i<5;i++){
+    shapes.push({
+      x: Math.random()*W,
+      y: Math.random()*H,
+      size: Math.random()*80+40,
+      vx: (Math.random()-0.5)*0.15,
+      vy: (Math.random()-0.5)*0.15,
+      alpha: Math.random()*0.04+0.01,
+      rot: Math.random()*Math.PI*2,
+      rotV: (Math.random()-0.5)*0.002
+    });
+  }
+
+  function drawShape(s){
+    ctx.save();
+    ctx.translate(s.x, s.y);
+    ctx.rotate(s.rot);
+    ctx.strokeStyle = `rgba(0,229,255,${s.alpha})`;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    const sides = 6;
+    for(let i=0;i<sides;i++){
+      const angle = (i/sides)*Math.PI*2;
+      const mx = Math.cos(angle)*s.size;
+      const my = Math.sin(angle)*s.size;
+      i===0 ? ctx.moveTo(mx,my) : ctx.lineTo(mx,my);
+    }
+    ctx.closePath();
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  /* Connect nearby particles */
+  function connectParticles(){
+    const DIST = 120;
+    for(let a=0;a<particles.length;a++){
+      for(let b=a+1;b<particles.length;b++){
+        const dx = particles[a].x - particles[b].x;
+        const dy = particles[a].y - particles[b].y;
+        const d  = Math.sqrt(dx*dx+dy*dy);
+        if(d < DIST){
+          const alpha = (1 - d/DIST)*0.08;
+          ctx.beginPath();
+          ctx.moveTo(particles[a].x, particles[a].y);
+          ctx.lineTo(particles[b].x, particles[b].y);
+          ctx.strokeStyle = `rgba(26,140,255,${alpha})`;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    shapes.forEach(s=>{
+      s.x+=s.vx; s.y+=s.vy; s.rot+=s.rotV;
+      if(s.x<-100)s.x=W+100; if(s.x>W+100)s.x=-100;
+      if(s.y<-100)s.y=H+100; if(s.y>H+100)s.y=-100;
+      drawShape(s);
+    });
+    particles.forEach(p=>{ p.update(); p.draw(); });
+    connectParticles();
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+/* ── TYPED EFFECT ── */
+(function(){
+  const lines = [
+    'Student',
+    'Graphic Designer',
+    'RCY Volunteer',
+    'Creative Enthusiast',
+  ];
+  let li=0, ci=0, deleting=false;
+  const el = document.getElementById('typed-text');
+  function tick(){
+    const current = lines[li];
+    if(!deleting){
+      ci++;
+      el.textContent = current.slice(0,ci);
+      if(ci===current.length){ deleting=true; setTimeout(tick,1800); return; }
+    } else {
+      ci--;
+      el.textContent = current.slice(0,ci);
+      if(ci===0){ deleting=false; li=(li+1)%lines.length; }
+    }
+    setTimeout(tick, deleting ? 50 : 90);
+  }
+  tick();
+})();
+
+/* ── SCROLL: NAV ACTIVE + BACK-TO-TOP + REVEAL ── */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const backTop  = document.getElementById('back-top');
+const reveals  = document.querySelectorAll('.reveal');
+const skillBars= document.querySelectorAll('.skill-bar-fill');
+
+let skillsAnimated = false;
+
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+
+      /* Skill bars — trigger once */
+      if(entry.target.closest('#skills') && !skillsAnimated){
+        skillsAnimated = true;
+        document.querySelectorAll('.skill-bar-fill').forEach(bar=>{
+          bar.style.width = bar.dataset.width + '%';
+        });
+      }
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+reveals.forEach(el => observer.observe(el));
+
+window.addEventListener('scroll', ()=>{
+  /* Back to top */
+  backTop.classList.toggle('visible', window.scrollY > 400);
+
+  /* Active nav */
+  let current = '';
+  sections.forEach(s=>{
+    if(window.scrollY >= s.offsetTop - 90) current = s.id;
+  });
+  navLinks.forEach(a=>{
+    a.classList.toggle('active', a.getAttribute('href') === '#'+current);
+  });
+});
+
+/* ── HAMBURGER ── */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', ()=>{
+  mobileMenu.classList.toggle('open');
+});
+mobileMenu.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click', ()=> mobileMenu.classList.remove('open'));
+});
+
+/* ── BLOG FILTER ── */
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.blog-card').forEach(card=>{
+      if(filter === 'all' || card.dataset.category === filter){
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+/* ── BLOG SEARCH ── */
+document.querySelector('.search-input').addEventListener('input', function(){
+  const q = this.value.toLowerCase();
+  document.querySelectorAll('.blog-card').forEach(card=>{
+    const text = card.textContent.toLowerCase();
+    card.style.display = text.includes(q) ? '' : 'none';
+  });
+});
+
+/* ── COPY TO CLIPBOARD ── */
+function copyToClipboard(text, el){
+  navigator.clipboard.writeText(text).then(()=>{
+    showToast('Copied to clipboard!');
+  });
+}
+
+/* ── TOAST ── */
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=> t.classList.remove('show'), 2200);
+}
+
+/* ── FORM ── */
+function handleFormSubmit(e){
+  e.preventDefault();
+  showToast('Message sent! I\'ll be in touch soon.');
+  e.target.reset();
+}
+</script>
+</body>
+</html>
