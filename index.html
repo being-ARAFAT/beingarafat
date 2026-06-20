@@ -409,6 +409,11 @@ section {
 .hero-stats.left  { left: -80px; top: 50%; transform: translateY(-50%); }
 .hero-stats.right { right: -80px; top: 50%; transform: translateY(-50%); }
 
+.stat-pill-tl { position: absolute; top: 8px;  left: -10px; }
+.stat-pill-bl { position: absolute; bottom: 8px; left: -10px; }
+.stat-pill-tr { position: absolute; top: 8px;  right: -10px; }
+.stat-pill-br { position: absolute; bottom: 8px; right: -10px; }
+
 .stat-pill {
   background: var(--glass);
   border: 1px solid var(--border);
@@ -1437,25 +1442,21 @@ footer {
         </div>
         <div class="portrait-glow"></div>
       </div>
-      <div class="hero-stats left">
-        <div class="stat-pill">
-          <strong>RCY</strong>
-          <span>Volunteer</span>
-        </div>
-        <div class="stat-pill">
-          <strong>2025</strong>
-          <span>Trivium Festival</span>
-        </div>
+      <div class="stat-pill stat-pill-tl">
+        <strong>RCY</strong>
+        <span>Volunteer</span>
       </div>
-      <div class="hero-stats right">
-        <div class="stat-pill">
-          <strong>TGHS</strong>
-          <span>Arts Club Pres.</span>
-        </div>
-        <div class="stat-pill">
-          <strong>SSC</strong>
-          <span>2026 Batch</span>
-        </div>
+      <div class="stat-pill stat-pill-bl">
+        <strong>2025</strong>
+        <span>Trivium Festival</span>
+      </div>
+      <div class="stat-pill stat-pill-tr">
+        <strong>TGHS</strong>
+        <span>Arts Club Pres.</span>
+      </div>
+      <div class="stat-pill stat-pill-br">
+        <strong>SSC</strong>
+        <span>2026 Batch</span>
       </div>
     </div>
   </div>
@@ -1498,10 +1499,10 @@ footer {
       </div>
       <div class="about-visual reveal">
         <div class="about-img-main">
-          <img src="Cox.jpg" alt="Cox's Bazar" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius);">
+          <img src="MyPhoto.jpeg" alt="Arafat Rahman Rahi" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius);">
         </div>
         <div class="about-imgs-row">
-          <div class="about-img-sm"><img src="RCY.jpg" alt="RCY Activity" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-sm);"></div>
+          <div class="about-img-sm" style="overflow:hidden;"><img src="RCY.jpg" alt="RCY Activity" style="width:100%;height:120%;object-fit:cover;object-position:center bottom;border-radius:var(--radius-sm);display:block;"></div>
           <div class="about-img-sm"><img src="Trivium1.jpg" alt="Trivium Festival" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-sm);"></div>
         </div>
       </div>
@@ -1575,7 +1576,7 @@ footer {
 
       <div class="glass-card ach-card reveal">
         <div class="ach-img">
-          <img src="Cox.jpg" alt="Cox's Bazar" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <img src="Cox.jpg" alt="Cox's Bazar" style="width:100%;height:100%;object-fit:cover;object-position:center top;position:absolute;inset:0;">
           <div class="ach-badge-overlay">Experience</div>
         </div>
         <div class="ach-body">
