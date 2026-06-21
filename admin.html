@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel — ARR Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #04080f;
+  --deep: #070d1a;
+  --panel: #0b1425;
+  --glass: rgba(11,20,37,0.85);
+  --blue-bright: #1a8cff;
+  --cyan: #00e5ff;
+  --cyan-dim: rgba(0,229,255,0.10);
+  --blue-dim: rgba(26,140,255,0.10);
+  --border: rgba(0,229,255,0.14);
+  --text: #dde8f5;
+  --text-muted: #7a99bb;
+  --text-dim: #3f5870;
+  --red: #ff4d6a;
+  --red-dim: rgba(255,77,106,0.12);
+  --green: #00ff80;
+  --green-dim: rgba(0,255,128,0.10);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
+  --display: 'Space Grotesk', sans-serif;
+  --mono: 'Space Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  font-family: var(--display);
+  background: var(--navy);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* ── LOGIN ── */
+#login-screen {
+  width: 100%;
+  max-width: 380px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  backdrop-filter: blur(20px);
+  text-align: center;
+}
+.login-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.3rem;
+}
+.login-logo span { color: var(--text); }
+.login-sub {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+.login-input {
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  outline: none;
+  margin-bottom: 1rem;
+  transition: border-color var(--transition);
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+.login-input:focus { border-color: var(--cyan); }
+.login-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--blue-bright), var(--cyan));
+  color: var(--navy);
+  border: none;
+  border-radius: 99px;
+  padding: 13px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: box-shadow var(--transition);
+}
+.login-btn:hover { box-shadow: 0 0 24px rgba(0,229,255,0.4); }
+.login-error {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--red);
+  margin-top: 0.8rem;
+  min-height: 1rem;
+  letter-spacing: 0.05em;
+}
+
+/* ── ADMIN PANEL ── */
+#admin-panel {
+  display: none;
+  width: 100%;
+  max-width: 720px;
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.admin-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+}
+.admin-title span { color: var(--cyan); }
+.admin-badge {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+  background: var(--green-dim);
+  border: 1px solid rgba(0,255,128,0.2);
+  padding: 4px 12px;
+  border-radius: 99px;
+}
+.logout-btn {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  background: none;
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.logout-btn:hover { color: var(--red); border-color: var(--red); }
+
+/* ── CARDS ── */
+.admin-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(14px);
+}
+.card-title {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-title::before {
+  content: '';
+  width: 18px; height: 1px;
+  background: var(--cyan);
+}
+
+/* ── FORM ELEMENTS ── */
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 1rem; }
+.field-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.field input, .field textarea {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color var(--transition);
+}
+.field input:focus, .field textarea:focus { border-color: var(--cyan); }
+.field textarea { resize: vertical; min-height: 90px; }
+.char-count {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  text-align: right;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  background: linear-gradient(135deg, var(--blue-bright), var(--cyan));
+  color: var(--navy);
+  border: none;
+  border-radius: 99px;
+  padding: 11px 24px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: box-shadow var(--transition), transform var(--transition);
+  letter-spacing: 0.03em;
+}
+.btn-primary:hover { box-shadow: 0 0 20px rgba(0,229,255,0.4); transform: translateY(-1px); }
+
+.btn-danger {
+  background: transparent;
+  color: var(--red);
+  border: 1px solid var(--red-dim);
+  border-radius: 99px;
+  padding: 10px 22px;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.btn-danger:hover { background: var(--red-dim); border-color: var(--red); }
+
+.btn-row {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+}
+
+/* ── NOTE PREVIEW ── */
+#note-preview-box {
+  background: var(--blue-dim);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: var(--text);
+  white-space: pre-line;
+  min-height: 48px;
+  line-height: 1.6;
+}
+.no-note {
+  color: var(--text-dim);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-style: italic;
+}
+
+/* ── BLOG POSTS LIST ── */
+#posts-list { display: flex; flex-direction: column; gap: 1rem; }
+.post-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  transition: border-color var(--transition);
+}
+.post-item:hover { border-color: rgba(0,229,255,0.22); }
+.post-thumb {
+  width: 64px; height: 64px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--deep);
+  border: 1px solid var(--border);
+}
+.post-thumb-placeholder {
+  width: 64px; height: 64px;
+  border-radius: 8px;
+  background: var(--deep);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+.post-info { flex: 1; }
+.post-date {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+.post-caption {
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.5;
+  white-space: pre-line;
+  max-height: 60px;
+  overflow: hidden;
+}
+.post-img-count {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--cyan);
+  margin-top: 4px;
+}
+.delete-post-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: var(--radius-sm);
+  width: 32px; height: 32px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+.delete-post-btn:hover { color: var(--red); border-color: var(--red); background: var(--red-dim); }
+
+/* ── UPLOAD AREA ── */
+.upload-drop {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-sm);
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+  background: transparent;
+}
+.upload-drop:hover, .upload-drop.drag-over {
+  border-color: var(--cyan);
+  background: var(--cyan-dim);
+}
+.upload-drop-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.upload-drop-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.upload-drop-text span {
+  color: var(--cyan);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+#upload-preview-strip {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+.preview-thumb {
+  width: 72px; height: 72px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
+/* ── STATUS TOAST ── */
+.admin-toast {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  background: var(--glass);
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+  z-index: 999;
+}
+.admin-toast.show { opacity: 1; transform: translateY(0); }
+
+/* ── VIEW SITE LINK ── */
+.view-site {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  transition: color var(--transition);
+}
+.view-site:hover { color: var(--cyan); }
+</style>
+</head>
+<body>
+
+<!-- ── LOGIN ── -->
+<div id="login-screen">
+  <div class="login-logo">ARR<span>.</span></div>
+  <div class="login-sub">Admin Panel</div>
+  <input type="password" id="pw-input" class="login-input" placeholder="Enter password" autocomplete="current-password">
+  <button class="login-btn" onclick="doLogin()">Access Panel →</button>
+  <div class="login-error" id="login-error"></div>
+</div>
+
+<!-- ── ADMIN PANEL ── -->
+<div id="admin-panel">
+
+  <div class="admin-header">
+    <div>
+      <div class="admin-title">ARR<span>.</span> Admin</div>
+    </div>
+    <div style="display:flex;gap:0.8rem;align-items:center;flex-wrap:wrap;">
+      <span class="admin-badge">● Owner Mode</span>
+      <a href="index.html" target="_blank" class="view-site">↗ View Site</a>
+      <button class="logout-btn" onclick="doLogout()">Log Out</button>
+    </div>
+  </div>
+
+  <!-- NOTE CONTROL -->
+  <div class="admin-card">
+    <div class="card-title">Landing Page Note</div>
+
+    <div class="field">
+      <div class="field-label">Current Note</div>
+      <div id="note-preview-box"><span class="no-note">No note set — bubble hidden on site.</span></div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">New Note <span style="color:var(--text-dim)">(max 120 chars)</span></div>
+      <textarea id="note-editor" maxlength="120" placeholder="Type your note here...&#10;Supports line breaks."></textarea>
+      <div class="char-count"><span id="note-len">0</span> / 120</div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-primary" onclick="saveNote()">Post Note</button>
+      <button class="btn-danger" onclick="clearNote()">Clear Note</button>
+    </div>
+  </div>
+
+  <!-- BLOG POST CONTROL -->
+  <div class="admin-card">
+    <div class="card-title">Blog Posts</div>
+
+    <!-- New post -->
+    <div class="field">
+      <div class="field-label">Caption</div>
+      <textarea id="post-caption" placeholder="Write a caption..."></textarea>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Images (single or multiple · any ratio, auto-fitted)</div>
+      <div class="upload-drop" id="upload-drop" onclick="document.getElementById('file-input').click()">
+        <div class="upload-drop-icon">📷</div>
+        <div class="upload-drop-text">Drop images here or <span>browse files</span></div>
+      </div>
+      <input type="file" id="file-input" accept="image/*" multiple style="display:none;">
+      <div id="upload-preview-strip"></div>
+    </div>
+
+    <div class="btn-row" style="margin-bottom:2rem;">
+      <button class="btn-primary" onclick="addPost()">+ Publish Post</button>
+    </div>
+
+    <!-- Existing posts -->
+    <div class="field-label" style="margin-bottom:0.8rem;">Published Posts</div>
+    <div id="posts-list">
+      <div style="color:var(--text-dim);font-family:var(--mono);font-size:0.78rem;padding:1rem 0;">No posts yet.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div class="admin-toast" id="admin-toast"></div>
+
+<script>
+/* ── AUTH ── */
+// Password: arr2026  — change btoa value to update
+const PW_CHECK = 'YXJyMjAyNg==';
+function doLogin(){
+  const val = document.getElementById('pw-input').value;
+  if(btoa(val) === PW_CHECK){
+    sessionStorage.setItem('arr-admin','1');
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('admin-panel').style.display  = 'block';
+    init();
+  } else {
+    document.getElementById('login-error').textContent = 'Incorrect password.';
+    document.getElementById('pw-input').value = '';
+    setTimeout(()=> document.getElementById('login-error').textContent = '', 2000);
+  }
+}
+document.getElementById('pw-input').addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
+
+function doLogout(){
+  sessionStorage.removeItem('arr-admin');
+  location.reload();
+}
+
+// Auto-login if session active
+if(sessionStorage.getItem('arr-admin')==='1'){
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('admin-panel').style.display  = 'block';
+  document.addEventListener('DOMContentLoaded', init);
+  init();
+}
+
+/* ── TOAST ── */
+function toast(msg, color){
+  const t = document.getElementById('admin-toast');
+  t.textContent = msg;
+  t.style.borderColor = color||'var(--cyan)';
+  t.style.color = color||'var(--cyan)';
+  t.classList.add('show');
+  setTimeout(()=> t.classList.remove('show'), 2400);
+}
+
+/* ── STORAGE HELPERS ── */
+function getNotes(){ return localStorage.getItem('arr-note') || ''; }
+function getPosts(){
+  try { return JSON.parse(localStorage.getItem('arr-posts') || '[]'); }
+  catch{ return []; }
+}
+function savePosts(posts){ localStorage.setItem('arr-posts', JSON.stringify(posts)); }
+
+/* ── INIT ── */
+function init(){
+  renderNotePreview();
+  renderPosts();
+  setupNoteEditor();
+  setupUpload();
+}
+
+/* ── NOTE ── */
+function renderNotePreview(){
+  const box = document.getElementById('note-preview-box');
+  const n = getNotes();
+  if(n){ box.innerHTML = `<span style="white-space:pre-line">${n}</span>`; }
+  else { box.innerHTML = `<span class="no-note">No note set — bubble hidden on site.</span>`; }
+}
+
+function setupNoteEditor(){
+  const ta = document.getElementById('note-editor');
+  const len = document.getElementById('note-len');
+  ta.value = getNotes();
+  len.textContent = ta.value.length;
+  ta.addEventListener('input',()=>{ len.textContent = ta.value.length; });
+}
+
+function saveNote(){
+  const val = document.getElementById('note-editor').value.trim();
+  if(!val){ toast('Note is empty — use Clear to remove it.','var(--red)'); return; }
+  localStorage.setItem('arr-note', val);
+  renderNotePreview();
+  toast('Note posted! Visible on site now.');
+}
+
+function clearNote(){
+  localStorage.removeItem('arr-note');
+  document.getElementById('note-editor').value = '';
+  document.getElementById('note-len').textContent = '0';
+  renderNotePreview();
+  toast('Note cleared — bubble hidden on site.','var(--red)');
+}
+
+/* ── POSTS ── */
+let pendingFiles = [];
+
+function setupUpload(){
+  const drop = document.getElementById('upload-drop');
+  const inp  = document.getElementById('file-input');
+
+  inp.addEventListener('change', ()=>{
+    addFiles(Array.from(inp.files));
+    inp.value = '';
+  });
+
+  drop.addEventListener('dragover', e=>{ e.preventDefault(); drop.classList.add('drag-over'); });
+  drop.addEventListener('dragleave', ()=> drop.classList.remove('drag-over'));
+  drop.addEventListener('drop', e=>{
+    e.preventDefault();
+    drop.classList.remove('drag-over');
+    addFiles(Array.from(e.dataTransfer.files).filter(f=> f.type.startsWith('image/')));
+  });
+}
+
+function addFiles(files){
+  files.forEach(f=>{
+    const reader = new FileReader();
+    reader.onload = e=>{
+      pendingFiles.push(e.target.result);
+      renderPreviewStrip();
+    };
+    reader.readAsDataURL(f);
+  });
+}
+
+function renderPreviewStrip(){
+  const strip = document.getElementById('upload-preview-strip');
+  strip.innerHTML = pendingFiles.map((src,i)=>
+    `<img class="preview-thumb" src="${src}" title="Click to remove" onclick="removeFile(${i})">`
+  ).join('');
+}
+
+function removeFile(idx){
+  pendingFiles.splice(idx,1);
+  renderPreviewStrip();
+}
+
+function formatDate(iso){
+  if(!iso) return '';
+  const d = new Date(iso + 'T00:00:00');
+  return d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+}
+
+function addPost(){
+  const caption = document.getElementById('post-caption').value.trim();
+  if(!pendingFiles.length && !caption){ toast('Add at least an image or caption.','var(--red)'); return; }
+  const today = new Date().toISOString().slice(0,10);
+  const posts = getPosts();
+  posts.unshift({ date: today, caption, images: [...pendingFiles] });
+  savePosts(posts);
+  pendingFiles = [];
+  renderPreviewStrip();
+  document.getElementById('post-caption').value = '';
+  renderPosts();
+  toast('Post published!');
+}
+
+function deletePost(idx){
+  if(!confirm('Delete this post?')) return;
+  const posts = getPosts();
+  posts.splice(idx,1);
+  savePosts(posts);
+  renderPosts();
+  toast('Post deleted.','var(--red)');
+}
+
+function renderPosts(){
+  const list = document.getElementById('posts-list');
+  const posts = getPosts();
+  if(!posts.length){
+    list.innerHTML = `<div style="color:var(--text-dim);font-family:var(--mono);font-size:0.78rem;padding:1rem 0;">No posts yet.</div>`;
+    return;
+  }
+  list.innerHTML = posts.map((p,i)=>{
+    const thumb = p.images && p.images.length
+      ? `<img class="post-thumb" src="${p.images[0]}" alt="">`
+      : `<div class="post-thumb-placeholder">📷</div>`;
+    const imgCount = p.images && p.images.length > 1
+      ? `<div class="post-img-count">${p.images.length} images</div>` : '';
+    const captionHtml = (p.caption||'').replace(/</g,'&lt;');
+    return `
+    <div class="post-item">
+      ${thumb}
+      <div class="post-info">
+        <div class="post-date">${formatDate(p.date)}</div>
+        <div class="post-caption">${captionHtml || '<span style="color:var(--text-dim);font-style:italic">No caption</span>'}</div>
+        ${imgCount}
+      </div>
+      <button class="delete-post-btn" onclick="deletePost(${i})" title="Delete">✕</button>
+    </div>`;
+  }).join('');
+}
+</script>
+</body>
+</html>

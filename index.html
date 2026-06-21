@@ -317,6 +317,48 @@ section {
   box-shadow: var(--glow-cyan);
 }
 
+/* ── HERO NOTE BUBBLE ── */
+#hero-note-bubble {
+  position: absolute;
+  bottom: calc(100% + 18px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--glass);
+  border: 1px solid rgba(0,229,255,0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 18px 18px 18px 4px;
+  padding: 12px 18px;
+  min-width: 160px;
+  max-width: 260px;
+  box-shadow: var(--glow-cyan);
+  animation: notePop 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+  z-index: 2;
+}
+@keyframes notePop {
+  from { opacity:0; transform: translateX(-50%) scale(0.85) translateY(8px); }
+  to   { opacity:1; transform: translateX(-50%) scale(1) translateY(0); }
+}
+#hero-note-tail {
+  position: absolute;
+  bottom: -9px;
+  left: 24px;
+  width: 16px; height: 16px;
+  background: var(--glass);
+  border-right: 1px solid rgba(0,229,255,0.25);
+  border-bottom: 1px solid rgba(0,229,255,0.25);
+  transform: rotate(45deg);
+  backdrop-filter: blur(16px);
+}
+#hero-note-text {
+  font-family: var(--display);
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.55;
+  white-space: pre-line;
+  word-break: break-word;
+}
+
 /* HERO PORTRAIT */
 .hero-portrait {
   position: relative;
@@ -409,29 +451,29 @@ section {
 .hero-stats.left  { left: -80px; top: 50%; transform: translateY(-50%); }
 .hero-stats.right { right: -80px; top: 50%; transform: translateY(-50%); }
 
-.stat-pill-tl { position: absolute; top: 8px;  left: -10px; }
-.stat-pill-bl { position: absolute; bottom: 8px; left: -10px; }
-.stat-pill-tr { position: absolute; top: 8px;  right: -10px; }
-.stat-pill-br { position: absolute; bottom: 8px; right: -10px; }
+.stat-pill-tl { position: absolute; top: 52px;  left: -130px; }
+.stat-pill-bl { position: absolute; bottom: 52px; left: -130px; }
+.stat-pill-tr { position: absolute; top: 52px;  right: -130px; }
+.stat-pill-br { position: absolute; bottom: 52px; right: -130px; }
 
 .stat-pill {
   background: var(--glass);
   border: 1px solid var(--border);
   backdrop-filter: blur(12px);
   border-radius: var(--radius);
-  padding: 10px 16px;
+  padding: 12px 18px;
   white-space: nowrap;
   box-shadow: var(--glow-blue);
 }
 .stat-pill strong {
   font-family: var(--display);
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: var(--cyan);
   display: block;
 }
 .stat-pill span {
-  font-size: 0.7rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
 }
 
@@ -892,7 +934,201 @@ section {
   opacity: 0.7;
 }
 
-/* ── BLOG ── */
+/* ── LIGHTBOX ── */
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(4,8,15,0.96);
+  backdrop-filter: blur(12px);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+#lightbox.open { display: flex; }
+#lb-img {
+  max-width: 90vw;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: 0 0 60px rgba(0,229,255,0.12);
+}
+#lb-close {
+  position: absolute;
+  top: 1.2rem; right: 1.5rem;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1.2rem;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition);
+}
+#lb-close:hover { color: var(--cyan); border-color: var(--cyan); }
+#lb-prev, #lb-next {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  background: var(--glass);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1.8rem;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition);
+}
+#lb-prev { left: 1.2rem; }
+#lb-next { right: 1.2rem; }
+#lb-prev:hover, #lb-next:hover { color: var(--cyan); border-color: var(--cyan); }
+#lb-counter {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+
+/* ── BLOG UPLOAD BOX ── */
+.blog-upload-box {
+  margin-top: 2.5rem;
+  background: var(--glass);
+  border: 1px dashed rgba(0,229,255,0.22);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+}
+.blog-upload-top {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+/* ── BLOG MULTI-IMAGE GRID ── */
+.blog-img-wrap.single { cursor: pointer; }
+.blog-img-wrap.single img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+  transition: opacity var(--transition);
+}
+.blog-img-wrap.single:hover img { opacity: 0.85; }
+
+.blog-img-grid {
+  display: grid;
+  aspect-ratio: 1/1;
+  gap: 3px;
+  cursor: pointer;
+}
+.blog-img-grid.cnt1 { grid-template-columns: 1fr; }
+.blog-img-grid.cnt2 { grid-template-columns: 1fr 1fr; }
+.blog-img-grid.cnt3 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+.blog-img-grid.cnt4 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+
+.blog-img-thumb {
+  overflow: hidden;
+  position: relative;
+}
+.blog-img-grid.cnt3 .blog-img-thumb:first-child {
+  grid-row: span 2;
+}
+.blog-img-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition);
+}
+.blog-img-thumb:hover img { transform: scale(1.04); }
+.blog-img-more {
+  position: absolute;
+  inset: 0;
+  background: rgba(4,8,15,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* ── (note widget removed) ── */
+
+/* ── BLOG NEW GRID ── */
+.blog-grid-new {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.4rem;
+}
+
+.blog-post-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.blog-post-card:hover {
+  border-color: rgba(0,229,255,0.28);
+  box-shadow: var(--glow-cyan);
+  transform: translateY(-4px);
+}
+
+.blog-post-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  background: var(--panel);
+}
+
+.blog-post-img-placeholder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: var(--text-dim);
+}
+
+.blog-post-body {
+  padding: 1rem 1.1rem 1.2rem;
+}
+
+.blog-post-date {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.45rem;
+}
+
+.blog-post-caption {
+  font-family: var(--display);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Date input dark style */
+input[type="date"].search-input {
+  color-scheme: dark;
+}
+
+@media (max-width: 600px) {
+  .blog-grid-new { grid-template-columns: repeat(2, 1fr); gap: 0.9rem; }
+}
+
+/* ── BLOG OLD CARD (keep for CSS completeness) ── */
 .blog-search-row {
   display: flex;
   gap: 1rem;
@@ -1436,27 +1672,16 @@ footer {
       </div>
     </div>
     <div class="hero-portrait reveal">
+      <!-- NOTE BUBBLE — only visible when a note is saved -->
+      <div id="hero-note-bubble" style="display:none;">
+        <div id="hero-note-tail"></div>
+        <div id="hero-note-text"></div>
+      </div>
       <div class="portrait-ring">
         <div class="portrait-inner">
           <img src="Profile.jpg" alt="Arafat Rahman Rahi" class="profile-image">
         </div>
         <div class="portrait-glow"></div>
-      </div>
-      <div class="stat-pill stat-pill-tl">
-        <strong>RCY</strong>
-        <span>Volunteer</span>
-      </div>
-      <div class="stat-pill stat-pill-bl">
-        <strong>2025</strong>
-        <span>Trivium Festival</span>
-      </div>
-      <div class="stat-pill stat-pill-tr">
-        <strong>TGHS</strong>
-        <span>Arts Club Pres.</span>
-      </div>
-      <div class="stat-pill stat-pill-br">
-        <strong>SSC</strong>
-        <span>2026 Batch</span>
       </div>
     </div>
   </div>
@@ -1985,103 +2210,30 @@ footer {
     </div>
 
     <div class="blog-search-row reveal">
-      <input type="text" class="search-input" placeholder="Search posts...">
-      <div class="blog-filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="design">Design</button>
-        <button class="filter-btn" data-filter="leadership">Leadership</button>
-        <button class="filter-btn" data-filter="gaming">Gaming</button>
-        <button class="filter-btn" data-filter="life">Life</button>
-      </div>
+      <input type="text" id="blog-search" class="search-input" placeholder="Search by caption...">
+      <input type="date" id="blog-date-filter" class="search-input" style="max-width:180px;cursor:pointer;" title="Filter by date">
+      <button id="blog-clear" class="filter-btn" style="white-space:nowrap;">Clear</button>
     </div>
 
-    <div class="blog-grid">
-
-      <div class="glass-card blog-card reveal" data-category="design">
-        <div class="blog-cover">
-          🎨
-          <div class="blog-cover-label">Design</div>
-        </div>
-        <div class="blog-body">
-          <div class="blog-meta">
-            <span>Jun 2025</span>
-            <span>·</span>
-            <span>4 min read</span>
-          </div>
-          <div class="blog-title">What directing Trivium Festival taught me about design under pressure</div>
-          <div class="blog-excerpt">When you're coordinating visuals, teams, and deadlines all at once, design stops being aesthetic and starts being problem-solving.</div>
-          <div class="blog-tags">
-            <span class="blog-tag">Design</span>
-            <span class="blog-tag">Leadership</span>
-          </div>
-          <a href="#" class="read-more">Read more <span>→</span></a>
-        </div>
-      </div>
-
-      <div class="glass-card blog-card reveal" data-category="leadership">
-        <div class="blog-cover">
-          🤝
-          <div class="blog-cover-label">Volunteer</div>
-        </div>
-        <div class="blog-body">
-          <div class="blog-meta">
-            <span>Apr 2025</span>
-            <span>·</span>
-            <span>3 min read</span>
-          </div>
-          <div class="blog-title">Lessons from the field: my RCY volunteer journey so far</div>
-          <div class="blog-excerpt">Volunteering for Red Crescent Youth has redefined what it means to show up for your community — and for yourself.</div>
-          <div class="blog-tags">
-            <span class="blog-tag">Volunteer</span>
-            <span class="blog-tag">RCY</span>
-          </div>
-          <a href="#" class="read-more">Read more <span>→</span></a>
-        </div>
-      </div>
-
-      <div class="glass-card blog-card reveal" data-category="gaming">
-        <div class="blog-cover">
-          🎮
-          <div class="blog-cover-label">Gaming</div>
-        </div>
-        <div class="blog-body">
-          <div class="blog-meta">
-            <span>Mar 2025</span>
-            <span>·</span>
-            <span>5 min read</span>
-          </div>
-          <div class="blog-title">Why Hollow Knight's world-building is secretly a design lesson</div>
-          <div class="blog-excerpt">There's a reason Team Cherry's 2D platformer feels more alive than games with ten times the budget. It's all in the details.</div>
-          <div class="blog-tags">
-            <span class="blog-tag">Gaming</span>
-            <span class="blog-tag">Design</span>
-          </div>
-          <a href="#" class="read-more">Read more <span>→</span></a>
-        </div>
-      </div>
-
-      <div class="glass-card blog-card reveal" data-category="life">
-        <div class="blog-cover">
-          🌊
-          <div class="blog-cover-label">Life</div>
-        </div>
-        <div class="blog-body">
-          <div class="blog-meta">
-            <span>Jan 2025</span>
-            <span>·</span>
-            <span>3 min read</span>
-          </div>
-          <div class="blog-title">Cox's Bazar: what the sea reminds you to let go of</div>
-          <div class="blog-excerpt">A school trip. A beach. And an unexpected conversation with yourself that the waves make impossible to avoid.</div>
-          <div class="blog-tags">
-            <span class="blog-tag">Life</span>
-            <span class="blog-tag">Travel</span>
-          </div>
-          <a href="#" class="read-more">Read more <span>→</span></a>
-        </div>
-      </div>
-
+    <div id="blog-grid" class="blog-grid-new">
+      <!-- Posts will render here via JS -->
     </div>
+
+    <div id="blog-empty" style="display:none;text-align:center;padding:3rem 0;color:var(--text-dim);font-family:var(--mono);font-size:0.82rem;">
+      No posts match your search.
+    </div>
+
+    <!-- UPLOAD NEW POST -->
+    <div class="blog-upload-box reveal" id="upload-box" style="display:none;">
+      <div class="blog-upload-top">
+        <textarea id="upload-caption" class="form-textarea" placeholder="Write a caption... (optional)" style="min-height:72px;font-size:0.88rem;resize:none;flex:1;"></textarea>
+        <button id="upload-trigger" class="btn-primary" style="align-self:flex-end;white-space:nowrap;">
+          + Add Post
+        </button>
+      </div>
+      <input type="file" id="upload-files" accept="image/*" multiple style="display:none;">
+    </div>
+
   </div>
 </section>
 
@@ -2217,7 +2369,27 @@ footer {
   </div>
 </footer>
 
-<!-- BACK TO TOP -->
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button id="lb-close">✕</button>
+  <button id="lb-prev">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button id="lb-next">›</button>
+  <div id="lb-counter"></div>
+</div>
+
+<!-- NOTE INIT — reads from localStorage set by admin panel -->
+<script>
+(function(){
+  const saved = localStorage.getItem('arr-note');
+  const bubble = document.getElementById('hero-note-bubble');
+  const text   = document.getElementById('hero-note-text');
+  if(saved && saved.trim()){
+    text.textContent = saved;
+    bubble.style.display = 'block';
+  }
+})();
+</script>
 <a href="#home" id="back-top" title="Back to top">↑</a>
 
 <!-- TOAST -->
@@ -2411,28 +2583,132 @@ mobileMenu.querySelectorAll('a').forEach(a=>{
   a.addEventListener('click', ()=> mobileMenu.classList.remove('open'));
 });
 
-/* ── BLOG FILTER ── */
-document.querySelectorAll('.filter-btn').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    document.querySelectorAll('.blog-card').forEach(card=>{
-      if(filter === 'all' || card.dataset.category === filter){
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  });
+/* ── BLOG POSTS DATA & RENDER ── */
+const blogPosts = [
+  { date: '2026-06-21', caption: 'যেতে হবে বহুদূর!', images: ['Jete_Hobe_Bohudur.png'] },
+  { date: '2026-06-21', caption: 'ঠক ঠক!!\n-কে?\nআমি।\n-আমি কে?\nআগন্তুক।\n-কি চাই?\nএকটু ঠাই।', images: ['7.JPG'] },
+];
+
+function formatDate(iso){
+  if(!iso) return '';
+  const d = new Date(iso + 'T00:00:00');
+  return d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+}
+
+/* ── LIGHTBOX ── */
+let lbImages = [], lbIdx = 0;
+const lbEl = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbCounter = document.getElementById('lb-counter');
+function openLightbox(images, idx){
+  lbImages = images; lbIdx = idx;
+  lbImg.src = images[idx];
+  lbCounter.textContent = images.length > 1 ? `${idx+1} / ${images.length}` : '';
+  lbEl.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){
+  lbEl.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function lbNext(){ lbIdx = (lbIdx+1)%lbImages.length; lbImg.src = lbImages[lbIdx]; lbCounter.textContent = lbImages.length>1?`${lbIdx+1} / ${lbImages.length}`:''; }
+function lbPrev(){ lbIdx = (lbIdx-1+lbImages.length)%lbImages.length; lbImg.src = lbImages[lbIdx]; lbCounter.textContent = lbImages.length>1?`${lbIdx+1} / ${lbImages.length}`:''; }
+document.getElementById('lb-close').onclick = closeLightbox;
+document.getElementById('lb-next').onclick  = lbNext;
+document.getElementById('lb-prev').onclick  = lbPrev;
+lbEl.addEventListener('click', e=>{ if(e.target===lbEl) closeLightbox(); });
+document.addEventListener('keydown', e=>{
+  if(!lbEl.classList.contains('open')) return;
+  if(e.key==='Escape') closeLightbox();
+  if(e.key==='ArrowRight') lbNext();
+  if(e.key==='ArrowLeft') lbPrev();
 });
 
-/* ── BLOG SEARCH ── */
-document.querySelector('.search-input').addEventListener('input', function(){
-  const q = this.value.toLowerCase();
-  document.querySelectorAll('.blog-card').forEach(card=>{
-    const text = card.textContent.toLowerCase();
-    card.style.display = text.includes(q) ? '' : 'none';
+/* ── RENDER BLOG ── */
+function renderBlog(posts){
+  const grid = document.getElementById('blog-grid');
+  const empty = document.getElementById('blog-empty');
+  grid.innerHTML = '';
+  if(!posts.length){ empty.style.display='block'; return; }
+  empty.style.display='none';
+  posts.forEach(p => {
+    const imgs = p.images || (p.image ? [p.image] : []);
+    const card = document.createElement('div');
+    card.className = 'blog-post-card reveal';
+    card.dataset.date = p.date || '';
+    card.dataset.caption = (p.caption || '').toLowerCase();
+
+    /* Image area */
+    let imgAreaHtml = '';
+    if(imgs.length === 0){
+      imgAreaHtml = `<div class="blog-post-img-placeholder">📷</div>`;
+    } else if(imgs.length === 1){
+      imgAreaHtml = `<div class="blog-img-wrap single" data-idx="0"><img class="blog-post-img" src="${imgs[0]}" alt="" loading="lazy"></div>`;
+    } else {
+      const previews = imgs.slice(0,4).map((src,i) => {
+        const more = i===3 && imgs.length>4 ? `<div class="blog-img-more">+${imgs.length-4}</div>` : '';
+        return `<div class="blog-img-thumb" data-idx="${i}"><img src="${src}" alt="" loading="lazy">${more}</div>`;
+      }).join('');
+      imgAreaHtml = `<div class="blog-img-grid cnt${Math.min(imgs.length,4)}">${previews}</div>`;
+    }
+
+    const captionHtml = (p.caption||'').replace(/\n/g,'<br>');
+    card.innerHTML = `
+      ${imgAreaHtml}
+      <div class="blog-post-body">
+        <div class="blog-post-date">${formatDate(p.date)}</div>
+        <div class="blog-post-caption">${captionHtml}</div>
+      </div>`;
+
+    /* Click handlers */
+    card.querySelectorAll('[data-idx]').forEach(el=>{
+      el.addEventListener('click',()=> openLightbox(imgs, parseInt(el.dataset.idx)));
+    });
+    grid.appendChild(card);
+    observer.observe(card);
+  });
+}
+
+function filterBlog(){
+  const q = document.getElementById('blog-search').value.toLowerCase().trim();
+  const d = document.getElementById('blog-date-filter').value;
+  const filtered = blogPosts.filter(p => {
+    const captionMatch = !q || (p.caption||'').toLowerCase().includes(q);
+    const dateMatch    = !d || p.date === d;
+    return captionMatch && dateMatch;
+  });
+  renderBlog(filtered);
+}
+
+renderBlog(blogPosts);
+document.getElementById('blog-search').addEventListener('input', filterBlog);
+document.getElementById('blog-date-filter').addEventListener('change', filterBlog);
+document.getElementById('blog-clear').addEventListener('click', ()=>{
+  document.getElementById('blog-search').value = '';
+  document.getElementById('blog-date-filter').value = '';
+  renderBlog(blogPosts);
+});
+
+/* ── UPLOAD NEW POST ── */
+document.getElementById('upload-trigger').addEventListener('click',()=>{
+  document.getElementById('upload-files').click();
+});
+document.getElementById('upload-files').addEventListener('change', function(){
+  const files = Array.from(this.files);
+  if(!files.length) return;
+  const caption = document.getElementById('upload-caption').value.trim();
+  const today = new Date().toISOString().slice(0,10);
+  const readers = files.map(f => new Promise(res=>{
+    const r = new FileReader();
+    r.onload = e => res(e.target.result);
+    r.readAsDataURL(f);
+  }));
+  Promise.all(readers).then(srcs=>{
+    blogPosts.unshift({ date: today, caption, images: srcs });
+    renderBlog(blogPosts);
+    document.getElementById('upload-caption').value = '';
+    document.getElementById('upload-files').value = '';
+    showToast('Post added!');
   });
 });
 
@@ -2451,11 +2727,20 @@ function showToast(msg){
   setTimeout(()=> t.classList.remove('show'), 2200);
 }
 
-/* ── FORM ── */
+/* ── FORM — sends via mailto ── */
 function handleFormSubmit(e){
   e.preventDefault();
-  showToast('Message sent! I\'ll be in touch soon.');
-  e.target.reset();
+  const f = e.target;
+  const name    = f.querySelector('input[type="text"]').value.trim();
+  const email   = f.querySelector('input[type="email"]').value.trim();
+  const subject = f.querySelectorAll('input[type="text"]')[1]?.value.trim() || '';
+  const message = f.querySelector('textarea').value.trim();
+  const mailto  = `mailto:3eingarafat@gmail.com`
+    + `?subject=${encodeURIComponent(subject || 'Portfolio Contact from ' + name)}`
+    + `&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message)}`;
+  window.location.href = mailto;
+  showToast('Opening your email client...');
+  f.reset();
 }
 </script>
 </body>
